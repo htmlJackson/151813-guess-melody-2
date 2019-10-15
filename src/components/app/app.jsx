@@ -1,13 +1,9 @@
 import React from "react";
 import WelcomeScreen from "../welcome-screen/welcome-screen.jsx";
 
-const App = (props) => {
-  const {gameTime, errorCount} = props;
+const App = () => {
 
-  return <WelcomeScreen
-    time={gameTime}
-    errorCount={errorCount}
-  />;
+  return <WelcomeScreen />;
 };
 
 export default App;
