@@ -1,7 +1,7 @@
 # Учебный проект «Угадай мелодию» [![Build status][travis-image]][travis-url]
 
 * Студент: [Евгений Бервяченок](https://up.htmlacademy.ru/react/2/user/151813).
-* Наставник: `Неизвестно`.
+* Наставник: [Влад Бажанов](https://htmlacademy.ru/profile/id1222531).
 
 ---
 
