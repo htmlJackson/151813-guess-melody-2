@@ -8,7 +8,9 @@ const init = () => {
     errorCount: 3
   };
 
-  ReactDOM.render(<App errorCount={settings.errorCount} gameTime={settings.gameTime} />, document.querySelector(`#root`));
+  const onButtonClick = () => {};
+
+  ReactDOM.render(<App errorCount={settings.errorCount} gameTime={settings.gameTime} onButtonClick={onButtonClick} />, document.querySelector(`#root`));
 };
 
 init();
