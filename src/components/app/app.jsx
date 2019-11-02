@@ -14,14 +14,19 @@ class App extends React.PureComponent {
     const {questions} = props;
     const currentQuestion = questions[question];
 
+    const TYPE = {
+      genre: `genre`,
+      artist: `artist`
+    };
+
     switch (currentQuestion.type) {
-      case `genre`: return <GenreQuestionScreen
+      case TYPE.genre: return <GenreQuestionScreen
         screenIndex={question}
         question={currentQuestion}
         onAnswer={onUserAnswer}
       />;
 
-      case `artist`: return <ArtistQuestionScreen
+      case TYPE.artist: return <ArtistQuestionScreen
         screenIndex={question}
         question={currentQuestion}
         onAnswer={onUserAnswer}
@@ -36,23 +41,35 @@ class App extends React.PureComponent {
 
     this.state = {
       question: -1,
+      answers: [],
     };
+
+    this.handleAnswer = this.handleAnswer.bind(this);
   }
-  render() {
+
+  handleAnswer(answer) {
     const {questions} = this.props;
+    const newAnswers = this.state.answers.slice();
+    this.setState((prevState) => {
+      const nextIndex = prevState.question + 1;
+      const isEnd = nextIndex >= questions.length;
+
+      if (this.state.question !== -1) {
+        newAnswers.push(answer);
+      }
+
+      return {
+        question: !isEnd ? nextIndex : -1,
+        answers: newAnswers
+      };
+
+    });
+  }
+
+  render() {
     const {question} = this.state;
 
-    return App.getScreen(question, this.props, () => {
-      this.setState((prevState) => {
-        const nextIndex = prevState.question + 1;
-        const isEnd = nextIndex >= questions.length;
-
-        return {
-          prevState,
-          question: !isEnd ? nextIndex : -1,
-        };
-      });
-    });
+    return App.getScreen(question, this.props, this.handleAnswer);
   }
 
 }

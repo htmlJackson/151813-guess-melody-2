@@ -5,6 +5,10 @@ const ArtistQuestionScreen = (props) => {
   const {screenIndex, question, onAnswer} = props;
   const {answers} = question;
 
+  const answerHandler = (evt) => {
+    onAnswer(evt.target.value);
+  };
+
   return (
     <section className="game game--artist">
       <header className="game__header">
@@ -37,7 +41,7 @@ const ArtistQuestionScreen = (props) => {
           </div>
         </div>
 
-        <form className="game__artist" onChange={onAnswer}>
+        <form className="game__artist" onChange={answerHandler} >
           {answers.map((it, i) => {
             return (
               <div key={`${screenIndex}-answer-${i}`} className="artist">

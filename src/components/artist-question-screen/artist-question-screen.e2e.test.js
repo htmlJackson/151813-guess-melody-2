@@ -11,10 +11,17 @@ it(`E2E test on ArtistQuestionScreen answer`, () => {
   const question = 2;
   const currentQuestion = questions[question];
   const onAnswer = jest.fn();
-  const fakeEvent = {preventDefault: () => window.console.log(`preventDefault`)};
+  const mocEvent = {
+    preventDefault() {
+
+    },
+    target: {
+      value: `the-value`
+    }
+  };
   const artistQuestionScreen = shallow(<ArtistQuestionScreen screenIndex={question} question={currentQuestion} onAnswer={onAnswer} />);
   const genreQuestionForm = artistQuestionScreen.find(`.game__artist`);
-  genreQuestionForm.simulate(`change`, fakeEvent);
+  genreQuestionForm.simulate(`change`, mocEvent);
 
   expect(onAnswer).toHaveBeenCalledTimes(1);
 });

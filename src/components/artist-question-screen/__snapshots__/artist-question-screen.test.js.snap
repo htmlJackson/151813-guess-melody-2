@@ -81,7 +81,7 @@ exports[`Проверка <ArtistQuestionScreen> компонент <ArtistQuest
     </div>
     <form
       className="game__artist"
-      onChange={[MockFunction]}
+      onChange={[Function]}
     >
       <div
         className="artist"

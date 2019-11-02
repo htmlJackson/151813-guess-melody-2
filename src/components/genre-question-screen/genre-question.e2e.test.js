@@ -11,10 +11,13 @@ it(`E2E test on GenreQuestionScreen answer`, () => {
   const question = 0;
   const currentQuestion = questions[question];
   const onAnswer = jest.fn();
-  const fakeEvent = {preventDefault: () => window.console.log(`preventDefault`)};
   const genreQuestionScreen = shallow(<GenreQuestionScreen screenIndex={question} question={currentQuestion} onAnswer={onAnswer} />);
   const genreQuestionForm = genreQuestionScreen.find(`.game__tracks`);
-  genreQuestionForm.simulate(`submit`, fakeEvent);
+  genreQuestionForm.simulate(`submit`, {
+    preventDefault: () => {
+
+    }
+  });
 
   expect(onAnswer).toHaveBeenCalledTimes(1);
 });
