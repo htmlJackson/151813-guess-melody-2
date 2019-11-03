@@ -1,0 +1,19 @@
+import React from "react";
+import renderer from "react-test-renderer";
+
+import ArtistQuestionScreen from "../artist-question-screen/artist-question-screen.jsx";
+
+import {questions} from "../../mocks/questions.js";
+
+describe(`Проверка <ArtistQuestionScreen>`, () => {
+  it(`компонент <ArtistQuestionScreen> корректно отрисован`, () => {
+    const question = 2;
+
+    const currentQuestion = questions[question];
+    const onAnswer = jest.fn();
+
+    const tree = renderer.create(<ArtistQuestionScreen screenIndex={question} question={currentQuestion} onAnswer={onAnswer} />).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+});
