@@ -24,7 +24,7 @@ class GenreQuestionScreen extends React.PureComponent {
     newAnswers[i] = i;
     this.setState({
         answers: newAnswers
-      };
+      }
     });
   }
 
