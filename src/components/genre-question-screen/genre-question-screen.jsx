@@ -14,16 +14,15 @@ class GenreQuestionScreen extends React.PureComponent {
 
 
   handleSubmit(evt) {
-    const {onAnswer} = this.props;
     evt.preventDefault();
+    const {onAnswer} = this.props;
     onAnswer(this.state.answers);
   }
 
   handleCheckboxChange(i) {
     const newAnswers = this.state.answers.slice();
-    this.setState(() => {
-      newAnswers[i] = i;
-      return {
+    newAnswers[i] = i;
+    this.setState({
         answers: newAnswers
       };
     });

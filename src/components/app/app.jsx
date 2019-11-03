@@ -14,19 +14,19 @@ class App extends React.PureComponent {
     const {questions} = props;
     const currentQuestion = questions[question];
 
-    const TYPE = {
-      genre: `genre`,
-      artist: `artist`
+    const type = {
+      GENRE: `genre`,
+      ARTIST: `artist`
     };
 
     switch (currentQuestion.type) {
-      case TYPE.genre: return <GenreQuestionScreen
+      case type.GENRE: return <GenreQuestionScreen
         screenIndex={question}
         question={currentQuestion}
         onAnswer={onUserAnswer}
       />;
 
-      case TYPE.artist: return <ArtistQuestionScreen
+      case type.ARTIST: return <ArtistQuestionScreen
         screenIndex={question}
         question={currentQuestion}
         onAnswer={onUserAnswer}
