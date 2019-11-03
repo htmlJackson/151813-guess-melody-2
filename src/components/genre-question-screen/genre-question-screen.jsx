@@ -23,8 +23,7 @@ class GenreQuestionScreen extends React.PureComponent {
     const newAnswers = this.state.answers.slice();
     newAnswers[i] = i;
     this.setState({
-        answers: newAnswers
-      }
+      answers: newAnswers
     });
   }
 
