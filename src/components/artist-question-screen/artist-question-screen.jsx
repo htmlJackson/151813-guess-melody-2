@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const ArtistQuestionScreen = (props) => {
   const {screenIndex, question, onAnswer} = props;
-  const {answers} = question;
+  const {answers, song} = question;
 
   const answerHandler = (evt) => {
     onAnswer(evt.target.value);
@@ -34,10 +34,11 @@ const ArtistQuestionScreen = (props) => {
         <h2 className="game__title">Кто исполняет эту песню?</h2>
         <div className="game__track">
           <div className="track">
-            <button className="track__button track__button--play" type="button" />
-            <div className="track__status">
-              <audio />
-            </div>
+            <AudioPlayer
+              isPlaying={isPlaying}
+              onPlayButtonClick={() => this.setState({isPlaying: !isPlaying})}
+              src={song.src}
+            />
           </div>
         </div>
 
