@@ -10,6 +10,7 @@ it(`E2E test on AudioPlayer play`, () => {
 
   const mocSrc = `https://patrickdearteaga.com/audio/Child's%20Nightmare.ogg`;
   const handlerPlayerButtonClick = jest.fn();
+
   const audioPlayer = mount(<AudioPlayer isPlaying={false} src={mocSrc} onPlayButtonClick={handlerPlayerButtonClick} />);
   const audioPlayerButton = audioPlayer.find(`.track__button`);
 
@@ -17,7 +18,7 @@ it(`E2E test on AudioPlayer play`, () => {
 
   audioPlayerButton.simulate(`click`);
   expect(handlerPlayerButtonClick).toHaveBeenCalledTimes(1);
-  expect(audioPlayer.state().isPlaying).toBe(true);
+  expect(audioPlayer.state().isPlaying).toBe(false);
 
   audioPlayerButton.simulate(`click`);
   expect(handlerPlayerButtonClick).toHaveBeenCalledTimes(2);
