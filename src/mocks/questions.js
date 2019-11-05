@@ -31,7 +31,7 @@ const questions = [
     genre: `folk`,
     answers: [
       {
-        src: `https://upload.wikimedia.org/wikipedia/commons/f/fc/Russian_Anthem_chorus.ogg`,
+        src: `https://patrickdearteaga.com/audio/Child's%20Nightmare.ogg`,
         genre: `rock`,
       },
       {
@@ -39,11 +39,11 @@ const questions = [
         genre: `pop`,
       },
       {
-        src: `https://upload.wikimedia.org/wikipedia/commons/f/fc/Russian_Anthem_chorus.ogg`,
+        src: `https://patrickdearteaga.com/audio/Child's%20Nightmare.ogg`,
         genre: `jazz`,
       },
       {
-        src: `https://upload.wikimedia.org/wikipedia/commons/f/fc/Russian_Anthem_chorus.ogg`,
+        src: `https://patrickdearteaga.com/audio/Child's%20Nightmare.ogg`,
         genre: `rock`,
       },
     ],
@@ -73,7 +73,7 @@ const questions = [
     type: `artist`,
     song: {
       artist: `Jack Daniels`,
-      src: `https://upload.wikimedia.org/wikipedia/commons/f/fc/Russian_Anthem_chorus.ogg`,
+      src: `https://patrickdearteaga.com/audio/Child's%20Nightmare.ogg`,
     },
     answers: [
       {

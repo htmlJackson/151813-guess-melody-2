@@ -1,5 +1,5 @@
 import React from "react";
-import Enzyme, {shallow} from "enzyme";
+import Enzyme, {mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import ArtistQuestionScreen from "../artist-question-screen/artist-question-screen.jsx";
 
@@ -19,7 +19,7 @@ it(`E2E test on ArtistQuestionScreen answer`, () => {
       value: `the-value`
     }
   };
-  const artistQuestionScreen = shallow(<ArtistQuestionScreen screenIndex={question} question={currentQuestion} onAnswer={onAnswer} />);
+  const artistQuestionScreen = mount(<ArtistQuestionScreen screenIndex={question} question={currentQuestion} onAnswer={onAnswer} />);
   const genreQuestionForm = artistQuestionScreen.find(`.game__artist`);
   genreQuestionForm.simulate(`change`, mocEvent);
 

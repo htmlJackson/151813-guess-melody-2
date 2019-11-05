@@ -19,6 +19,7 @@ class GenreQuestionScreen extends React.PureComponent {
     evt.preventDefault();
     const {onAnswer} = this.props;
     onAnswer(this.state.answers);
+    this.setState({activePlayer: -1});
   }
 
   handleCheckboxChange(i) {

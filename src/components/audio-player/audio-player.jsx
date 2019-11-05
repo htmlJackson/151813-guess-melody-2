@@ -42,7 +42,7 @@ class AudioPlayer extends React.PureComponent {
 
     audio.oncanplaythrough = () => this.setState({isLoading: false});
 
-    audio.onPlay = () => this.setState({isPlaying: true})
+    audio.onPlay = () => this.setState({isPlaying: true});
 
     audio.onPause = () => this.setState({isPlaying: false});
 

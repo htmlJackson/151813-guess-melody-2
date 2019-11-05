@@ -5,6 +5,9 @@ import ArtistQuestionScreen from "../artist-question-screen/artist-question-scre
 
 import {questions} from "../../mocks/questions.js";
 
+jest.mock(`../audio-player/audio-player.jsx`);
+
+
 describe(`Проверка <ArtistQuestionScreen>`, () => {
   it(`компонент <ArtistQuestionScreen> корректно отрисован`, () => {
     const question = 2;

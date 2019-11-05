@@ -5,6 +5,8 @@ import GenreQuestionScreen from "../genre-question-screen/genre-question-screen.
 
 import {questions} from "../../mocks/questions.js";
 
+jest.mock(`../audio-player/audio-player.jsx`);
+
 describe(`Проверка <GenreQuestionScreen>`, () => {
   it(`компонент <GenreQuestionScreen> корректно отрисован`, () => {
     const question = 0;
