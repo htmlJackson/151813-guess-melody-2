@@ -8,7 +8,7 @@ Enzyme.configure({adapter: new Adapter()});
 describe(`AudioPlayer components e2e test`, () => {
   jest.spyOn(window.HTMLMediaElement.prototype, `play`).mockImplementation(() => {});
   jest.spyOn(window.HTMLMediaElement.prototype, `pause`).mockImplementation(() => {});
-  
+
   const createWrapper = (isPlaying) => {
     const audioSrc = `https://patrickdearteaga.com/audio/Child's%20Nightmare.ogg`;
     const handlePlayButtonClick = jest.fn();
