@@ -5,22 +5,39 @@ import AudioPlayer from "../audio-player/audio-player.jsx";
 
 Enzyme.configure({adapter: new Adapter()});
 
-it(`E2E test on AudioPlayer play`, () => {
+describe(`AudioPlayer components e2e test`, () => {
+  jest.spyOn(window.HTMLMediaElement.prototype, `play`).mockImplementation(() => {});
   jest.spyOn(window.HTMLMediaElement.prototype, `pause`).mockImplementation(() => {});
+  
+  const createWrapper = (isPlaying) => {
+    const audioSrc = `https://patrickdearteaga.com/audio/Child's%20Nightmare.ogg`;
+    const handlePlayButtonClick = jest.fn();
+    return mount(<AudioPlayer
+      isPlaying={isPlaying}
+      src={audioSrc}
+      onPlayButtonClick={handlePlayButtonClick}
+    />
+    );
+  };
 
-  const mocSrc = `https://patrickdearteaga.com/audio/Child's%20Nightmare.ogg`;
-  const handlerPlayerButtonClick = jest.fn();
+  const click = (wrapper) => {
+    wrapper.setState({isLoading: false});
 
-  const audioPlayer = mount(<AudioPlayer isPlaying={false} src={mocSrc} onPlayButtonClick={handlerPlayerButtonClick} />);
-  const audioPlayerButton = audioPlayer.find(`.track__button`);
+    const button = wrapper.find(`button`);
+    button.simulate(`click`);
+  };
 
-  audioPlayer.setState({isLoading: false});
+  it(`On click play button component state isPlaying change to TRUE`, () => {
+    const wrapper = createWrapper(false);
+    click(wrapper);
 
-  audioPlayerButton.simulate(`click`);
-  expect(handlerPlayerButtonClick).toHaveBeenCalledTimes(1);
-  expect(audioPlayer.state().isPlaying).toBe(false);
+    expect(wrapper.state().isPlaying).toBeTruthy();
+  });
 
-  audioPlayerButton.simulate(`click`);
-  expect(handlerPlayerButtonClick).toHaveBeenCalledTimes(2);
-  expect(audioPlayer.state().isPlaying).toEqual(false);
+  it(`On click play button component state isPlaying change to FALSE`, () => {
+    const wrapper = createWrapper(true);
+    click(wrapper);
+
+    expect(wrapper.state().isPlaying).toBeFalsy();
+  });
 });
