@@ -92,17 +92,6 @@ exports[`Проверка <GenreQuestionScreen> компонент <GenreQuestio
       <div
         className="track"
       >
-        <button
-          className="track__button track__button--play"
-          type="button"
-        />
-        <div
-          className="track__status"
-        >
-          <audio
-            src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Russian_Anthem_chorus.ogg"
-          />
-        </div>
         <div
           className="game__answer"
         >
@@ -125,17 +114,6 @@ exports[`Проверка <GenreQuestionScreen> компонент <GenreQuestio
       <div
         className="track"
       >
-        <button
-          className="track__button track__button--play"
-          type="button"
-        />
-        <div
-          className="track__status"
-        >
-          <audio
-            src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Russian_Anthem_chorus.ogg"
-          />
-        </div>
         <div
           className="game__answer"
         >
@@ -158,17 +136,6 @@ exports[`Проверка <GenreQuestionScreen> компонент <GenreQuestio
       <div
         className="track"
       >
-        <button
-          className="track__button track__button--play"
-          type="button"
-        />
-        <div
-          className="track__status"
-        >
-          <audio
-            src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Russian_Anthem_chorus.ogg"
-          />
-        </div>
         <div
           className="game__answer"
         >
@@ -191,17 +158,6 @@ exports[`Проверка <GenreQuestionScreen> компонент <GenreQuestio
       <div
         className="track"
       >
-        <button
-          className="track__button track__button--play"
-          type="button"
-        />
-        <div
-          className="track__status"
-        >
-          <audio
-            src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Russian_Anthem_chorus.ogg"
-          />
-        </div>
         <div
           className="game__answer"
         >

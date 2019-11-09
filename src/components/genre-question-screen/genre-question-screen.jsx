@@ -1,11 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
+import AudioPlayer from "../audio-player/audio-player.jsx";
 
 class GenreQuestionScreen extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      answers: Array(4).fill(null)
+      answers: Array(4).fill(null),
+      activePlayer: -1,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -17,6 +19,7 @@ class GenreQuestionScreen extends React.PureComponent {
     evt.preventDefault();
     const {onAnswer} = this.props;
     onAnswer(this.state.answers);
+    this.setState({activePlayer: -1});
   }
 
   handleCheckboxChange(i) {
@@ -68,10 +71,13 @@ class GenreQuestionScreen extends React.PureComponent {
             {answers.map((it, i) => {
               return (
                 <div key={`${screenIndex}-answer-${i}`} className="track">
-                  <button className="track__button track__button--play" type="button" />
-                  <div className="track__status">
-                    <audio src={it.src}/>
-                  </div>
+                  <AudioPlayer
+                    src={it.src}
+                    isPlaying={i === this.state.activePlayer}
+                    onPlayButtonClick={() => this.setState({
+                      activePlayer: this.state.activePlayer === i ? -1 : i
+                    })}
+                  />
                   <div className="game__answer">
                     <input className="game__input visually-hidden" type="checkbox" name="answer" value={`answer-${i}`} id={`answer-${i}`} onChange={() => {
                       this.handleCheckboxChange(i);
