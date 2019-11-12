@@ -1,12 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import AudioPlayer from "../audio-player/audio-player.jsx";
+import GameMistakes from "../game-mistakes/game-mistakes.jsx";
+import Timer from "../timer/timer.jsx";
 
 class GenreQuestionScreen extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      answers: Array(4).fill(null),
+      answers: new Array(4).fill(false),
       activePlayer: -1,
     };
 
@@ -19,19 +21,23 @@ class GenreQuestionScreen extends React.PureComponent {
     evt.preventDefault();
     const {onAnswer} = this.props;
     onAnswer(this.state.answers);
-    this.setState({activePlayer: -1});
+    this.setState({
+      activePlayer: -1,
+      answers: new Array(4).fill(false)
+    });
   }
 
   handleCheckboxChange(i) {
     const newAnswers = this.state.answers.slice();
-    newAnswers[i] = i;
+    newAnswers[i] = !newAnswers[i];
+
     this.setState({
       answers: newAnswers
-    });
+    }, () => console.log(this.state.answers));
   }
 
   render() {
-    const {screenIndex, question} = this.props;
+    const {screenIndex, question, mistakes, onAnswer, gameTime} = this.props;
     const {genre, answers} = question;
 
     const circleStyle = {
@@ -51,18 +57,8 @@ class GenreQuestionScreen extends React.PureComponent {
           <svg xmlns="http://www.w3.org/2000/svg" className="timer" viewBox="0 0 780 780">
             <circle className="timer__line" cx="390" cy="390" r="370" style={circleStyle} />
           </svg>
-
-          <div className="timer__value" xmlns="http://www.w3.org/1999/xhtml">
-            <span className="timer__mins">05</span>
-            <span className="timer__dots">:</span>
-            <span className="timer__secs">00</span>
-          </div>
-
-          <div className="game__mistakes">
-            <div className="wrong"></div>
-            <div className="wrong"></div>
-            <div className="wrong"></div>
-          </div>
+          <Timer gameTime={gameTime}/>
+          <GameMistakes mistakes={mistakes} />
         </header>
 
         <section className="game__screen">
@@ -79,7 +75,7 @@ class GenreQuestionScreen extends React.PureComponent {
                     })}
                   />
                   <div className="game__answer">
-                    <input className="game__input visually-hidden" type="checkbox" name="answer" value={`answer-${i}`} id={`answer-${i}`} onChange={() => {
+                    <input className="game__input visually-hidden" type="checkbox" name="answer" value={`answer-${i}`} id={`answer-${i}`} key={`answer-${i}`} onChange={() => {
                       this.handleCheckboxChange(i);
                     }} />
                     <label className="game__check" htmlFor={`answer-${i}`}>Отметить</label>

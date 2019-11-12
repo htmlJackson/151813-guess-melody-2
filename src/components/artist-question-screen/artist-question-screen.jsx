@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import AudioPlayer from "../audio-player/audio-player.jsx";
-
+import GameMistakes from "../game-mistakes/game-mistakes.jsx";
+import Timer from "../timer/timer.jsx";
 
 class ArtistQuestionScreen extends React.PureComponent {
   constructor(props) {
@@ -13,14 +14,9 @@ class ArtistQuestionScreen extends React.PureComponent {
   }
 
   render() {
-    const {screenIndex, question, onAnswer} = this.props;
+    const {screenIndex, question, onAnswer, mistakes, gameTime, onTimerTick} = this.props;
     const {answers, song} = question;
     const {isPlaying} = this.state;
-
-    const answerHandler = (evt) => {
-      onAnswer(evt.target.value);
-      this.setState({isPlaying: false});
-    };
 
     return (
       <section className="game game--artist">
@@ -30,17 +26,9 @@ class ArtistQuestionScreen extends React.PureComponent {
             <img className="game__logo" src="img/melody-logo-ginger.png" alt="Угадай мелодию" />
           </a>
 
-          <div className="timer__value">
-            <span className="timer__mins">05</span>
-            <span className="timer__dots">:</span>
-            <span className="timer__secs">00</span>
-          </div>
+          <Timer gameTime={gameTime} onTimerTick={onTimerTick} />
 
-          <div className="game__mistakes">
-            <div className="wrong"></div>
-            <div className="wrong"></div>
-            <div className="wrong"></div>
-          </div>
+          <GameMistakes mistakes={mistakes} />
         </header>
 
         <section className="game__screen">
@@ -54,11 +42,11 @@ class ArtistQuestionScreen extends React.PureComponent {
               />
             </div>
           </div>
-          <form className="game__artist" onChange={answerHandler} >
+          <form className="game__artist">
             {answers.map((it, i) => {
               return (
                 <div key={`${screenIndex}-answer-${i}`} className="artist">
-                  <input className="artist__input visually-hidden" type="radio" name="answer" value={`answer-${i}`} id={`answer-${i}`} />
+                  <input onClick={() => onAnswer(it)} className="artist__input visually-hidden" type="radio" name="answer" value={`answer-${i}`} id={`answer-${i}`} />
                   <label className="artist__name" htmlFor={`answer-${i}`}>
                     <img className="artist__picture" src={it.picture} alt={it.artist} />
                     {it.artist}

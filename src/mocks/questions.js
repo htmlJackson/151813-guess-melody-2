@@ -32,7 +32,7 @@ const questions = [
     answers: [
       {
         src: `https://patrickdearteaga.com/audio/Child's%20Nightmare.ogg`,
-        genre: `rock`,
+        genre: `folk`,
       },
       {
         src: `https://upload.wikimedia.org/wikipedia/commons/f/fc/Russian_Anthem_chorus.ogg`,
@@ -78,15 +78,15 @@ const questions = [
     answers: [
       {
         picture: `http://placehold.it/134x134`,
-        artist: `John Snow`,
-      },
-      {
-        picture: `http://placehold.it/134x134`,
         artist: `Jack Daniels`,
       },
       {
         picture: `http://placehold.it/134x134`,
         artist: `Jim Beam`,
+      },
+      {
+        picture: `http://placehold.it/134x134`,
+        artist: `John Snow`,
       },
     ],
   },
