@@ -33,11 +33,11 @@ class GenreQuestionScreen extends React.PureComponent {
 
     this.setState({
       answers: newAnswers
-    }, () => console.log(this.state.answers));
+    });
   }
 
   render() {
-    const {screenIndex, question, mistakes, onAnswer, gameTime} = this.props;
+    const {screenIndex, question, mistakes, gameTime, onTimerTick, onTimerExpire} = this.props;
     const {genre, answers} = question;
 
     const circleStyle = {
@@ -57,7 +57,7 @@ class GenreQuestionScreen extends React.PureComponent {
           <svg xmlns="http://www.w3.org/2000/svg" className="timer" viewBox="0 0 780 780">
             <circle className="timer__line" cx="390" cy="390" r="370" style={circleStyle} />
           </svg>
-          <Timer gameTime={gameTime}/>
+          <Timer gameTime={gameTime} onTimerTick={onTimerTick} onTimerExpire={onTimerExpire} />
           <GameMistakes mistakes={mistakes} />
         </header>
 
@@ -104,7 +104,11 @@ GenreQuestionScreen.propTypes = {
         }).isRequired
     ).isRequired,
   }).isRequired,
-  onAnswer: PropTypes.func.isRequired
+  onAnswer: PropTypes.func.isRequired,
+  mistakes: PropTypes.number.isRequired,
+  gameTime: PropTypes.number.isRequired,
+  onTimerTick: PropTypes.func.isRequired,
+  onTimerExpire: PropTypes.func.isRequired,
 };
 
 export default GenreQuestionScreen;

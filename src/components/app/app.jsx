@@ -12,11 +12,11 @@ class App extends React.PureComponent {
   getScreen(question) {
 
     if (!question) {
-      const {gameTime, errorCount, onWelcomeScreenClick, onTimerTick} = this.props;
+      const {gameTime, errorCount, onWelcomeScreenClick} = this.props;
       return <WelcomeScreen gameTime={gameTime} errorCount={errorCount} onButtonClick={onWelcomeScreenClick} />;
     }
 
-    const {gameTime, errorCount, step, mistakes, onUserAnswer, onTimerTick} = this.props;
+    const {gameTime, errorCount, step, mistakes, onUserAnswer, onTimerTick, onTimerExpire} = this.props;
 
     const type = {
       GENRE: `genre`,
@@ -30,12 +30,13 @@ class App extends React.PureComponent {
         mistakes={mistakes}
         gameTime={gameTime}
         onAnswer={(userAnswer) => onUserAnswer(
-          userAnswer,
-          question,
-          mistakes,
-          errorCount
+            userAnswer,
+            question,
+            mistakes,
+            errorCount
         )}
         onTimerTick={onTimerTick}
+        onTimerExpire={onTimerExpire}
       />;
 
       case type.ARTIST: return <ArtistQuestionScreen
@@ -44,12 +45,13 @@ class App extends React.PureComponent {
         mistakes={mistakes}
         gameTime={gameTime}
         onAnswer={(userAnswer) => onUserAnswer(
-          userAnswer,
-          question,
-          mistakes,
-          errorCount
+            userAnswer,
+            question,
+            mistakes,
+            errorCount
         )}
         onTimerTick={onTimerTick}
+        onTimerExpire={onTimerExpire}
       />;
     }
 
@@ -66,7 +68,13 @@ class App extends React.PureComponent {
 App.propTypes = {
   gameTime: PropTypes.number.isRequired,
   errorCount: PropTypes.number.isRequired,
-  questions: PropTypes.array.isRequired
+  questions: PropTypes.array.isRequired,
+  onWelcomeScreenClick: PropTypes.func.isRequired,
+  step: PropTypes.number.isRequired,
+  mistakes: PropTypes.number.isRequired,
+  onUserAnswer: PropTypes.func.isRequired,
+  onTimerTick: PropTypes.func.isRequired,
+  onTimerExpire: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
@@ -81,14 +89,16 @@ const mapDispatchToProps = (dispatch) => ({
   onUserAnswer: (userAnswer, question, mistakes, maxMistakes) => {
     dispatch(ActionCreator.incrementStep());
     dispatch(ActionCreator.incrementMistake(
-      userAnswer,
-      question,
-      mistakes,
-      maxMistakes
+        userAnswer,
+        question,
+        mistakes,
+        maxMistakes
     ));
   },
 
   onTimerTick: () => dispatch(ActionCreator.decrementTime()),
+
+  onTimerExpire: () => dispatch(ActionCreator.resetGame()),
 });
 
 export {App};

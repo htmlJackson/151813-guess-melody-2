@@ -48,7 +48,7 @@ exports[`Проверка <GenreQuestionScreen> компонент <GenreQuestio
       <span
         className="timer__mins"
       >
-        05
+        NaN
       </span>
       <span
         className="timer__dots"
@@ -58,18 +58,12 @@ exports[`Проверка <GenreQuestionScreen> компонент <GenreQuestio
       <span
         className="timer__secs"
       >
-        00
+        0NaN
       </span>
     </div>
     <div
       className="game__mistakes"
     >
-      <div
-        className="wrong"
-      />
-      <div
-        className="wrong"
-      />
       <div
         className="wrong"
       />

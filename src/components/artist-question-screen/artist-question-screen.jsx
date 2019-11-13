@@ -14,7 +14,7 @@ class ArtistQuestionScreen extends React.PureComponent {
   }
 
   render() {
-    const {screenIndex, question, onAnswer, mistakes, gameTime, onTimerTick} = this.props;
+    const {screenIndex, question, onAnswer, mistakes, gameTime, onTimerTick, onTimerExpire} = this.props;
     const {answers, song} = question;
     const {isPlaying} = this.state;
 
@@ -26,7 +26,7 @@ class ArtistQuestionScreen extends React.PureComponent {
             <img className="game__logo" src="img/melody-logo-ginger.png" alt="Угадай мелодию" />
           </a>
 
-          <Timer gameTime={gameTime} onTimerTick={onTimerTick} />
+          <Timer gameTime={gameTime} onTimerTick={onTimerTick} onTimerExpire={onTimerExpire} />
 
           <GameMistakes mistakes={mistakes} />
         </header>
@@ -76,7 +76,11 @@ ArtistQuestionScreen.propTypes = {
         }).isRequired
     ).isRequired
   }).isRequired,
-  onAnswer: PropTypes.func.isRequired
+  onAnswer: PropTypes.func.isRequired,
+  mistakes: PropTypes.number.isRequired,
+  gameTime: PropTypes.number.isRequired,
+  onTimerTick: PropTypes.func.isRequired,
+  onTimerExpire: PropTypes.func.isRequired,
 };
 
 export default ArtistQuestionScreen;

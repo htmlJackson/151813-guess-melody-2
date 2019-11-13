@@ -23,11 +23,12 @@ exports[`Проверка <ArtistQuestionScreen> компонент <ArtistQuest
     </a>
     <div
       className="timer__value"
+      xmlns="http://www.w3.org/1999/xhtml"
     >
       <span
         className="timer__mins"
       >
-        05
+        NaN
       </span>
       <span
         className="timer__dots"
@@ -37,18 +38,12 @@ exports[`Проверка <ArtistQuestionScreen> компонент <ArtistQuest
       <span
         className="timer__secs"
       >
-        00
+        0NaN
       </span>
     </div>
     <div
       className="game__mistakes"
     >
-      <div
-        className="wrong"
-      />
-      <div
-        className="wrong"
-      />
       <div
         className="wrong"
       />
@@ -71,7 +66,6 @@ exports[`Проверка <ArtistQuestionScreen> компонент <ArtistQuest
     </div>
     <form
       className="game__artist"
-      onChange={[Function]}
     >
       <div
         className="artist"
@@ -80,6 +74,7 @@ exports[`Проверка <ArtistQuestionScreen> компонент <ArtistQuest
           className="artist__input visually-hidden"
           id="answer-0"
           name="answer"
+          onClick={[Function]}
           type="radio"
           value="answer-0"
         />
@@ -102,6 +97,7 @@ exports[`Проверка <ArtistQuestionScreen> компонент <ArtistQuest
           className="artist__input visually-hidden"
           id="answer-1"
           name="answer"
+          onClick={[Function]}
           type="radio"
           value="answer-1"
         />
@@ -124,6 +120,7 @@ exports[`Проверка <ArtistQuestionScreen> компонент <ArtistQuest
           className="artist__input visually-hidden"
           id="answer-2"
           name="answer"
+          onClick={[Function]}
           type="radio"
           value="answer-2"
         />

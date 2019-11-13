@@ -12,6 +12,6 @@ const GameMistakes = (props) => {
 
 GameMistakes.propTypes = {
   mistakes: PropTypes.number.isRequired,
-}
+};
 
 export default GameMistakes;

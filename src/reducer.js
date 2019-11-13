@@ -42,13 +42,17 @@ const ActionCreator = {
     return {
       type: `INCREMENT_MISTAKES`,
       payload: answerIsCorrect ? 0 : 1,
-    }
+    };
   },
 
   decrementTime: () => ({
     type: `DECREMENT_TIME`,
     payload: 1,
   }),
+
+  resetGame: () => ({
+    type: `RESET`
+  })
 };
 
 const reducer = (state = initialState, action) => {
