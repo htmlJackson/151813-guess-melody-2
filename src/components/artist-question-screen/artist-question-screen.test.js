@@ -15,7 +15,17 @@ describe(`Проверка <ArtistQuestionScreen>`, () => {
     const currentQuestion = questions[question];
     const onAnswer = jest.fn();
 
-    const tree = renderer.create(<ArtistQuestionScreen screenIndex={question} question={currentQuestion} onAnswer={onAnswer} />).toJSON();
+    const tree = renderer.create(
+        <ArtistQuestionScreen
+          screenIndex={question}
+          question={currentQuestion}
+          onAnswer={onAnswer}
+          mistakes={0}
+          gameTime={5}
+          onTimerTick={jest.fn()}
+          onTimerExpire={jest.fn()}
+        />
+    ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

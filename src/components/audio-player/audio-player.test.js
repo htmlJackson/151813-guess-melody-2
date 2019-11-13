@@ -6,6 +6,8 @@ import AudioPlayer from "../audio-player/audio-player.jsx";
 jest.mock(`./audio-player`);
 
 describe(`Проверка <AudioPlayer>`, () => {
+  jest.spyOn(window.HTMLMediaElement.prototype, `play`).mockImplementation(() => {});
+  jest.spyOn(window.HTMLMediaElement.prototype, `pause`).mockImplementation(() => {});
   it(`компонент <AudioPlayer> корректно отрисован`, () => {
     const mocSrc = `https://patrickdearteaga.com/audio/Child's%20Nightmare.ogg`;
 

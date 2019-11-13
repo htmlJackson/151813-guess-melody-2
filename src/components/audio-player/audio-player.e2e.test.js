@@ -6,6 +6,7 @@ import AudioPlayer from "../audio-player/audio-player.jsx";
 Enzyme.configure({adapter: new Adapter()});
 
 describe(`AudioPlayer components e2e test`, () => {
+  jest.mock(`./audio-player`);
   jest.spyOn(window.HTMLMediaElement.prototype, `play`).mockImplementation(() => {});
   jest.spyOn(window.HTMLMediaElement.prototype, `pause`).mockImplementation(() => {});
 

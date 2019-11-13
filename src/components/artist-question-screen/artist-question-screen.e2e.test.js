@@ -19,9 +19,19 @@ it(`E2E test on ArtistQuestionScreen answer`, () => {
       value: `the-value`
     }
   };
-  const artistQuestionScreen = mount(<ArtistQuestionScreen screenIndex={question} question={currentQuestion} onAnswer={onAnswer} />);
-  const genreQuestionForm = artistQuestionScreen.find(`.game__artist`);
-  genreQuestionForm.simulate(`change`, mocEvent);
+  const artistQuestionScreen = mount(
+      <ArtistQuestionScreen
+        screenIndex={question}
+        question={currentQuestion}
+        onAnswer={onAnswer}
+        mistakes={0}
+        gameTime={5}
+        onTimerTick={jest.fn()}
+        onTimerExpire={jest.fn()}
+      />
+  );
+  const genreQuestionForm = artistQuestionScreen.find(`.artist__input#answer-0`);
+  genreQuestionForm.simulate(`click`, mocEvent);
 
   expect(onAnswer).toHaveBeenCalledTimes(1);
 });

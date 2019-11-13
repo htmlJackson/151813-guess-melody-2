@@ -11,7 +11,17 @@ it(`E2E test on GenreQuestionScreen answer`, () => {
   const question = 0;
   const currentQuestion = questions[question];
   const onAnswer = jest.fn();
-  const genreQuestionScreen = mount(<GenreQuestionScreen screenIndex={question} question={currentQuestion} onAnswer={onAnswer} />);
+  const genreQuestionScreen = mount(
+      <GenreQuestionScreen
+        screenIndex={question}
+        question={currentQuestion}
+        onAnswer={onAnswer}
+        mistakes={0}
+        gameTime={5}
+        onTimerTick={jest.fn()}
+        onTimerExpire={jest.fn()}
+      />
+  );
   const genreQuestionForm = genreQuestionScreen.find(`.game__tracks`);
   genreQuestionForm.simulate(`submit`, {
     preventDefault: () => {
